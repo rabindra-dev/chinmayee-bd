@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Chinmayee!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+    body {
+      margin: 0;
+      background-color: #fff0f5;
+      font-family: 'Caveat', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #c71585;
+      font-size: 32px;
+    }
+
+    .cake-container {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 0 auto;
+    }
+
+    .cake-tier {
+      position: absolute;
+      background: #f4a261;
+      border-radius: 10px;
+    }
+
+    .tier-1 {
+      width: 180px;
+      height: 40px;
+      bottom: 0;
+      left: 10px;
+    }
+
+    .tier-2 {
+      width: 140px;
+      height: 35px;
+      bottom: 40px;
+      left: 30px;
+    }
+
+    .tier-3 {
+      width: 100px;
+      height: 30px;
+      bottom: 75px;
+      left: 50px;
+    }
+
+    .icing {
+      position: absolute;
+      background: #ffcad4;
+      height: 5px;
+      border-radius: 5px;
+    }
+
+    .icing-1 {
+      width: 180px;
+      bottom: 40px;
+      left: 10px;
+    }
+
+    .icing-2 {
+      width: 140px;
+      bottom: 75px;
+      left: 30px;
+    }
+
+    .icing-3 {
+      width: 100px;
+      bottom: 105px;
+      left: 50px;
+    }
+
+    .candle {
+      position: absolute;
+      width: 8px;
+      height: 30px;
+      background: #f0f0f0;
+      bottom: 105px;
+      border-radius: 2px;
+    }
+
+    .candle-1 {
+      left: 60px;
+    }
+
+    .candle-2 {
+      left: 90px;
+    }
+
+    .candle-3 {
+      left: 120px;
+    }
+
+    .flame {
+      position: absolute;
+      width: 6px;
+      height: 12px;
+      background: #ff9500;
+      border-radius: 50% 50% 0 0;
+      top: -12px;
+      left: 1px;
+      animation: flicker 0.5s infinite alternate;
+    }
+
+    .puff {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(200, 200, 200, 0.5);
+      border-radius: 50%;
+      top: -20px;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .candle.off .flame,
+    .candle.off .puff {
+      opacity: 0;
+    }
+
+    .candle.blow .puff {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #ff0000;
+      animation: fall 5s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .confetti:nth-child(odd) {
+      background: #ff69b4;
+    }
+
+    .confetti:nth-child(even) {
+      background: #00b7eb;
+    }
+
+    .confetti:nth-child(3n) {
+      background: #ffd700;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .confetti:nth-child(4n) {
+      background: #32cd32;
+      clip-path: circle(50%);
+    }
+
+    .poem {
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 20px 0;
+      background: #fff8dc;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .blow-button {
+      background: #ff69b4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .blow-button:hover {
+      background: #ff1493;
+    }
+
+    .wish-message {
+      display: none;
+      margin-top: 15px;
+      color: #c71585;
+      font-size: 22px;
+    }
+
+    /* Image carousel */
+    .carousel {
+      display: none;
+      margin-top: 30px;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: opacity 0.5s ease-in-out;
+      opacity: 1;
+    }
+
+    .carousel img.fade-out {
+      opacity: 0;
+    }
+
+    .carousel .controls {
+      margin-top: 10px;
+    }
+
+    .carousel button {
+      background: #ffa7c4;
+      border: none;
+      padding: 8px 14px;
+      margin: 0 5px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @keyframes flicker {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .carousel img {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Happy Birthday, Chinmayee!</h1>
+    <div class="cake-container">
+      <div class="cake-tier tier-1"></div>
+      <div class="cake-tier tier-2"></div>
+      <div class="cake-tier tier-3"></div>
+      <div class="icing icing-1"></div>
+      <div class="icing icing-2"></div>
+      <div class="icing icing-3"></div>
+      <div class="candle candle-1">
+        <div class="flame"></div>
+        <div class="puff"></div>
+      </div>
+      <div class="candle candle-2">
+        <div class="flame"></div>
+        <div class="puff"></div>
+      </div>
+      <div class="candle candle-3">
+        <div class="flame"></div>
+        <div class="puff"></div>
+      </div>
+    </div>
+
+    <div class="poem">
+      My dearest Panda, on this special day,<br>
+      Though miles apart, my heart’s not far away.<br>
+      Your smile brings warmth, my endless light.<br>
+      Happy Birthday, my love, my guiding star,<br>
+      Until we meet, you’re close, no matter how far. 💖
+    </div>
+
+    <button class="blow-button" onclick="blowCandles()">Blow Out the Candles!</button>
+    <div class="wish-message" id="wishMessage">
+      Your wish is my command, my love! ❤️
+    </div>
+
+    <div class="carousel" id="photoCarousel">
+      <img id="carouselImg" src="./img/chinmayee1.jpg" alt="Birthday memory">
+      <div class="controls">
+        <button onclick="prevImage()">⟵ Prev</button>
+        <button onclick="nextImage()">Next ⟶</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Confetti animation
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = (Math.random() * 100) + 'vw';
+      confetti.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(confetti);
+    }
+
+    function blowCandles() {
+      document.querySelectorAll('.candle').forEach(candle => {
+        candle.classList.add('blow');
+        setTimeout(() => candle.classList.add('off'), 500);
+      });
+
+      document.getElementById('wishMessage').style.display = 'block';
+      document.getElementById('photoCarousel').style.display = 'block';
+    }
+
+    // Carousel
+    const images = [
+      './img/chinmayee1.jpg',
+      './img/chinmayee2.jpg',
+      './img/chinmayee3.jpg',
+      './img/chinmayee4.jpg',
+    ];
+    let currentIndex = 0;
+
+    let autoSlideInterval;
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        nextImage();
+      }, 3000); // Change image every 3 seconds
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    function showImage(index) {
+      const img = document.getElementById('carouselImg');
+      img.classList.add('fade-out');
+
+      setTimeout(() => {
+        img.src = images[index];
+        img.classList.remove('fade-out');
+      }, 300); // Timing slightly less than CSS transition for smoothness
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+      stopAutoSlide(); // Stop the automatic slideshow when the user clicks prev
+      startAutoSlide(); // Restart it after the button click
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+      stopAutoSlide(); // Stop the automatic slideshow when the user clicks next
+      startAutoSlide(); // Restart it after the button click
+    }
+
+    // Initialize the auto slideshow when the page loads
+    window.onload = startAutoSlide;
+
+  </script>
+</body>
+
+</html>
