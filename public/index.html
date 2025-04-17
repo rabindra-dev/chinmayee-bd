@@ -7,7 +7,7 @@
   <title>Happy Birthday, Chinmayee!</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<audio id="birthdaySong" src="audio/blue.mp3" preload="auto"></audio>
+<audio id="birthdaySong" src="audio/hbd.m4apreload="auto"></audio>
 <body>
   <div class="container">
     <h1>Happy Birthday, Chinmayee!</h1>
@@ -75,22 +75,22 @@
 
       // Play the birthday song
       const song = document.getElementById('birthdaySong');
+      song.volume = 0.2; // Very soft (20% volume)
       song.play();
 
       // Happy birthday wishes in different languages
       const messages = [
-        "Happy Birthday, Chinmayee!",             // English
-        "जन्मदिन मुबारक हो, चिन्मयी!",             // Hindi
-        "生日快乐，Chinmayee！",                    // Chinese
-        "Joyeux anniversaire, Chinmayee !",       // French
-        "Feliz cumpleaños, Chinmayee!",           // Spanish
-        "Buon compleanno, Chinmayee!",            // Italian
-        "Alles Gute zum Geburtstag, Chinmayee!",  // German
-        "С днём рождения, Чинмаи!",               // Russian
-        "お誕生日おめでとう, チンマイ！",             // Japanese
-        "생일 축하해요, 친마이!",                    // Korean
-        "Parabéns, Chinmayee!",                   // Portuguese
-        "عيد ميلاد سعيد، تشينمايي!",               // Arabic
+        "Happy Birthday,",             // English
+        "जन्मदिन मुबारक हो, ",             // Hindi
+        "生日快乐，",                    // Chinese
+        "Joyeux anniversaire,  ",       // French
+        "Feliz cumpleaños, ",           // Spanish
+        "Buon compleanno, ",            // Italian
+        "Alles Gute zum Geburtstag, ",  // German
+        "С днём рождения, ",               // Russian
+        "お誕生日おめでとう,",             // Japanese
+        "생일 축하해요,",                    // Korean
+        "Parabéns,",                   // Portuguese
       ];
 
       let delay = 0;
